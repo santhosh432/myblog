@@ -24,4 +24,5 @@ urlpatterns = [
     path('home/', views.new_home, name='new_home'),
     path('contact/', views.home_contact, name='home_contact'),
     path('blog/', views.home_blog, name='home_blog'),
+    path('about_me/', views.home_about_me, name='home_aboutme'),
 ]
