@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .forms import UserRegisteration
+from .models import Post
 # Create your views here.
 
 def home(request):
@@ -20,3 +21,8 @@ def home_blog(request):
 
 def home_about_me(request):
     return render(request, template_name='blog/about_me.html')
+
+def all_posts(request):
+    post = Post.objects.all()
+    context = {'my_post' : post}
+    return render(request, template_name='blog/all_post.html', context=context)

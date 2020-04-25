@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+
+{% block container_one %}
+<div class="alert alert-info">
+
+
+<h3>All post</h3>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Post title</th>
+        <th>Post Description</th>
+        <th>Posted date</th>
+    </tr>
+    {% for post in my_post %}
+    <tr>
+        <th>{{ forloop.counter }}</th>
+        <th>{{ post.title }}</th>
+        <th>{{ post.description }}</th>
+        <th>{{ post.posted_date }}</th>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
