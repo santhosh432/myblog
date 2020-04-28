@@ -26,4 +26,7 @@ urlpatterns = [
     path('blog/', views.home_blog, name='home_blog'),
     path('about_me/', views.home_about_me, name='home_aboutme'),
     path('all_posts/', views.all_posts, name='all_posts'),
+    path('create_post/', views.create_post, name='create_post'),
+    path('edit_post/<int:pk>/', views.edit_post, name='edit_post'),
+    path('delete_post/<int:pk>/', views.post_delete, name='post_delete'),
 ]

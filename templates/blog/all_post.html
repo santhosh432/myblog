@@ -1,17 +1,22 @@
 {% extends 'blog/base.html' %}
 
+<div class="container">
+
 
 {% block container_one %}
-<div class="alert alert-info">
+<div class="card">
 
 
-<h3>All post</h3>
-<table class="table">
+<h3 class="alert alert-info">All post</h3>
+    <a href="{% url 'create_post' %}" class="btn btn-success">Create post</a>
+<table class="table" style="color:blue; font-size:12px;">
     <tr>
         <th>ID</th>
         <th>Post title</th>
         <th>Post Description</th>
         <th>Posted date</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     {% for post in my_post %}
     <tr>
@@ -19,8 +24,12 @@
         <th>{{ post.title }}</th>
         <th>{{ post.description }}</th>
         <th>{{ post.posted_date }}</th>
+        <th><a href="{% url 'edit_post' post.id %}">Edit</a> </th>
+        <th><a href="{% url 'post_delete' post.id %}">Delete</a> </th>
     </tr>
     {% endfor %}
 </table>
 </div>
 {% endblock %}
+
+ </div>
