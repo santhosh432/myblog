@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import UserRegisteration, PostForm, PostModelForm
 from .models import Post
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 # from .forms import PostForm
 # Create your views here.
 
@@ -37,7 +39,7 @@ def create_post(request):
         if post_form.is_valid():
 
             post_form.save()
-
+            messages.success(request, 'Success')
             return redirect('all_posts')
 
     else:
@@ -66,4 +68,19 @@ def post_delete(request, pk=None):
     post.delete()
     return redirect('all_posts')
 
+
+def signup(request):
+
+    if request.method == 'POST':
+        user_form = UserCreationForm(request.POST)
+        print(user_form)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your form is successfully created ')
+            return redirect('/')
+
+    else:
+        user_form = UserCreationForm()
+    context = {'user_form': user_form}
+    return render(request, template_name='blog/sign-up.html', context=context)
 

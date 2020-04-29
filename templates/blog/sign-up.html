@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block container_one %}
+<div class="alert alert-info">Sign-up Form</div>
+<div class="alert alert-info">
+    <form class="form" method="post">
+        <table class="table">
+            {% csrf_token %}
+                    {{ user_form.as_table }}
+
+        </table>
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}
