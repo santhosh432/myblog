@@ -71,8 +71,10 @@
         <li><a href="#">Contact Us</a></li>
         <li><a href="{% url 'all_posts' %}">Post</a></li>
         <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
         <li><a href="{% url 'signup' %}">Sign-UP</a></li>
+        <li><a href="">{% if request.user.id %} {{ request.user }}{% endif %}</a></li>
+        {% if request.user.id %} <li><a href="{% url 'logout' %}"> Logout </a></li> {% endif %}
       </ul>
     </div>
   </div>

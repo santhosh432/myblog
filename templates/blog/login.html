@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block container_one %}
+
+<form method="post">
+
+<div class="alert alert-info">
+
+
+    <div class="card" style="width: 28rem; margin:auto;">
+
+        <div class="card-header">
+            <div class="alert alert-success">Login</div>
+        </div>
+
+        <div class="card-body">
+             {% csrf_token %}
+
+            {% for field in form %}
+                      <div class="form-group">
+                         {{ field.label }}:  {{ field }}
+
+                        <small id="emailHelp" class="form-text text-muted">
+                            {{ field.help_text }}
+                        </small>
+                      </div>
+
+            {% endfor %}
+        </div>
+
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+    </div>
+
+</div>
+</form>
+{% endblock %}

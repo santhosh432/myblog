@@ -3,6 +3,8 @@ from .forms import UserRegisteration, PostForm, PostModelForm
 from .models import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 # from .forms import PostForm
 # Create your views here.
 
@@ -30,6 +32,8 @@ def all_posts(request):
     context = {'my_post' : post}
     return render(request, template_name='blog/all_post.html', context=context)
 
+
+@login_required
 def create_post(request):
 
     if request.method == 'POST':
@@ -84,3 +88,7 @@ def signup(request):
     context = {'user_form': user_form}
     return render(request, template_name='blog/sign-up.html', context=context)
 
+def logout_request(request):
+    logout(request)
+    messages.info(request, 'Successfully logout')
+    return redirect('/')
